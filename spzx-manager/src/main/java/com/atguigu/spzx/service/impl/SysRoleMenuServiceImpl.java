@@ -1,5 +1,8 @@
 package com.atguigu.spzx.service.impl;
 
+import com.atguigu.spzx.service.SysRoleMenuService;
+import org.springframework.stereotype.Service;
+
 /**
  * projectName: com.atguigu.spzx.service.impl
  *
@@ -7,6 +10,6 @@ package com.atguigu.spzx.service.impl;
  * time: 2023/8/3 11:55
  * description:
  */
-
-public class SysRoleMenuServiceImpl {
+@Service
+public class SysRoleMenuServiceImpl implements SysRoleMenuService {
 }

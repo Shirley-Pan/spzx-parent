@@ -49,4 +49,8 @@
         update sys_role set is_deleted =1 where id=#{value}
     </delete>
 
+    <select id="findAllRoles" resultMap="sysRole">
+        select <include refid="columns"/> from sys_role where is_deleted =0
+    </select>
+
 </mapper>

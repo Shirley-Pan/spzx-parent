@@ -10,6 +10,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+import java.util.Objects;
+
 /**
  * projectName: com.atguigu.spzx.controller
  *
@@ -57,6 +60,11 @@ public class SysRoleController {
         return Result.build(pageInfo, ResultCodeEnum.SUCCESS);
     }
 
+    @GetMapping("findAllRoles/{userId}")
+    public Result<Map<String, Object>> findAllRoles(@PathVariable Long userId){
+        Map<String,Object> resultMap =sysRoleService.findAllRoles(userId);
+        return Result.build(resultMap,ResultCodeEnum.SUCCESS);
+    }
 
 
 

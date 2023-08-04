@@ -29,7 +29,7 @@ public class SysUserController {
                              @PathVariable Integer currentPage,
                              @PathVariable Integer pageSize){
         PageInfo<SysUser> pageInfo =sysUserService.findByPage(sysUserDto,currentPage,pageSize);
-        return Result.build(null, ResultCodeEnum.SUCCESS);
+        return Result.build(pageInfo, ResultCodeEnum.SUCCESS);
     }
 
     //  用户添加

@@ -7,15 +7,15 @@
     <sql id="columns">
         id,username userName,password,name,phone,avatar,description,status,create_time,update_time,is_deleted
     </sql>
+    <resultMap id="SysUser" type="com.atguigu.spzx.manager.model.entity.system.SysUser" autoMapping="true"/>
 
-    <select id="selectByUserName" resultType="com.atguigu.spzx.manager.model.entity.system.SysUser">
+    <select id="selectByUserName" resultMap="SysUser">
         select
         <include refid="columns"/>
         from sys_user
         where username=#{userName} and is_deleted=0;
     </select>
 
-    <resultMap id="SysUser" type="com.atguigu.spzx.manager.model.entity.system.SysUser" autoMapping="true"/>
 
     <select id="findByPage" resultMap="SysUser">
         select <include refid="columns"/> from sys_user

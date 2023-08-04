@@ -1,7 +1,10 @@
 package com.atguigu.spzx.mapper;
 
+import com.atguigu.spzx.manager.model.entity.system.SysMenu;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * projectName: com.atguigu.spzx.mapper
@@ -13,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface SysMenuMapper {
+    List<SysMenu> selectAll();
 }

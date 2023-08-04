@@ -1,6 +1,9 @@
 package com.atguigu.spzx.service;
 
+import com.atguigu.spzx.manager.model.entity.system.SysMenu;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * projectName: com.atguigu.spzx.service
@@ -12,4 +15,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface SysMenuService {
 
+    List<SysMenu> findNodes();
 }

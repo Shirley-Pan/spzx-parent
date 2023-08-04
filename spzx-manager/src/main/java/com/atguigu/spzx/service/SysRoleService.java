@@ -5,6 +5,8 @@ import com.atguigu.spzx.manager.model.entity.system.SysRole;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
  * projectName: com.atguigu.spzx.service
  *
@@ -22,4 +24,8 @@ public interface SysRoleService {
     void updateSysRole(SysRole sysRole);
 
     void deleteById(Integer roleId);
+
+    Map<String, Object> findAllRoles(Long userId);
+
+
 }
