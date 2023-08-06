@@ -1,14 +1,12 @@
 package com.atguigu.spzx.controller;
 
+import com.atguigu.spzx.manager.common.config.exception.GuiguException;
 import com.atguigu.spzx.manager.model.entity.system.SysMenu;
 import com.atguigu.spzx.manager.model.vo.common.Result;
 import com.atguigu.spzx.manager.model.vo.common.ResultCodeEnum;
 import com.atguigu.spzx.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,9 +24,26 @@ public class SysMenuController {
     private SysMenuService sysMenuService;
     @GetMapping("findNodes")
     public Result<List<SysMenu>> findNodes(){
-       List<SysMenu> list= sysMenuService.findNodes();
+       List<SysMenu> list= sysMenuService.findNodesMenu();
         return Result.build(list , ResultCodeEnum.SUCCESS) ;
     }
 
+    @PostMapping("save")
+    public  Result save(@RequestBody SysMenu sysMenu){
+        sysMenuService.save(sysMenu);
+        return Result.build(null,ResultCodeEnum.SUCCESS);
+    }
 
+    @PutMapping("updateById")
+    public Result updateById(@RequestBody SysMenu sysMenu){
+        sysMenuService.updateById(sysMenu);
+        return Result.build(null,ResultCodeEnum.SUCCESS);
+    }
+
+    @DeleteMapping("removeById/{id}")
+    public Result removeById(@PathVariable Long id){
+        sysMenuService.removeById(id);
+        return Result.build(null , ResultCodeEnum.SUCCESS) ;
+    }
 }
+

@@ -1,8 +1,11 @@
 package com.atguigu.spzx.controller;
 
 import cn.hutool.core.date.DateUnit;
+import com.atguigu.spzx.manager.model.entity.system.SysMenu;
 import com.atguigu.spzx.manager.model.entity.system.SysUser;
+import com.atguigu.spzx.manager.model.vo.system.SysMenuVo;
 import com.atguigu.spzx.manager.model.vo.system.ValidateCodeVo;
+import com.atguigu.spzx.service.SysMenuService;
 import com.atguigu.spzx.service.SysUserService;
 import com.atguigu.spzx.manager.model.dto.system.LoginDto;
 import com.atguigu.spzx.manager.model.vo.common.Result;
@@ -13,6 +16,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * projectName: com.atguigu.spzx.controller
@@ -27,6 +32,8 @@ import org.springframework.web.bind.annotation.*;
 public class IndexController {
     @Autowired
     private SysUserService sysUserService;
+    @Autowired
+    private SysMenuService sysMenuService;
     //退出，主要是清除redis中的token，因为前端框架自带了退出功能
     @GetMapping("logout")
     public Result logout(@RequestHeader String token){
@@ -62,6 +69,11 @@ public class IndexController {
         return  Result.build(loginVo, ResultCodeEnum.SUCCESS);
     }
 
+    @GetMapping("menus")
+    public Result menus(){
+        List<SysMenuVo> sysMenuVoList=sysMenuService.findUserMenuList();
+        return Result.build(sysMenuVoList,ResultCodeEnum.SUCCESS);
+    }
 
 }
 
