@@ -23,7 +23,7 @@ public interface SysRoleService {
 
     void updateSysRole(SysRole sysRole);
 
-    void deleteById(Integer roleId);
+    void deleteById(Long roleId);
 
     Map<String, Object> findAllRoles(Long userId);
 

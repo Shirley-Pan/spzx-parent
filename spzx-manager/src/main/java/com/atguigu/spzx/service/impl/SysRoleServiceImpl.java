@@ -33,7 +33,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public void deleteById(Integer roleId) {
+    public void deleteById(Long roleId) {
         sysRoleMapper.deleteById(roleId);
     }
 

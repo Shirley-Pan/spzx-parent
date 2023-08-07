@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.atguigu.spzx.mapper.CategoryBrandMapper">
+
+    <resultMap id="categoryBrandMap" type="com.atguigu.spzx.manager.model.entity.product.CategoryBrand" autoMapping="true">
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+        id,brand_id,category_id,create_time,update_time,is_deleted
+    </sql>
+
+    <select id="findPage" resultMap="categoryBrandMap">
+        select cb.id,cb.brand_id,cb.category_id,cb.create_time,cb.update_time,
+        c.name as categoryName,
+        b.name as brandName, b.logo from category_brand cb
+        inner join brand b on cb.category_id=b.id
+        inner join category c on cb.category_id=c.id
+            <where>
+                <if test="brandId !=null and brandId !=''">
+                    cb.brand_id=#{brandId}
+                </if>
+                <if test="categoryId!=null and categoryId!=''">
+                    and cb.category_id=#{categoryId}
+                </if>
+            </where>
+                and cb.is_deleted=0;
+    </select>
+
+    <insert id="save" >
+        insert into category_brand (
+        id,
+        brand_id,
+        category_id,
+        create_time,
+        update_time ,
+        is_deleted
+        ) values (
+        #{id},
+        #{brandId},
+        #{categoryId},
+        now(),
+        now(),
+        0
+        )
+    </insert>
+
+    <update id="updateById">
+        update category_brand set
+        <if test="brandId != null and brandId != ''">
+            brand_id = #{brandId},
+        </if>
+        <if test="categoryId != null and categoryId != ''">
+            category_id = #{categoryId},
+        </if>
+        update_time =  now()
+        where
+        id = #{id}
+    </update>
+    <update id="deleteById">
+        update category_brand set
+        update_time = now() ,
+        is_deleted = 1
+        where
+        id = #{id}
+    </update>
+
+
+
+</mapper>

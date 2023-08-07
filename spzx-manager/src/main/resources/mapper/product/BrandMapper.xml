@@ -57,5 +57,9 @@
         where
         id = #{id}
     </update>
+    <!--查询所有品牌-->
+    <select id="findAllBrand" resultMap="brandMap">
+        select <include refid="columns"/> from brand where is_deleted=0
+    </select>
 
 </mapper>

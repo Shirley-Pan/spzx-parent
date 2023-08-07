@@ -9,6 +9,8 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * projectName: com.atguigu.spzx.controller
  *
@@ -42,4 +44,12 @@ public class BrandController {
         brandService.deleteById(id);
         return Result.build(null , ResultCodeEnum.SUCCESS) ;
     }
+
+    //查询所有品牌
+    @GetMapping("findAll")
+    public Result findAll(){
+        List<Brand> brandList =brandService.findAll();
+        return  Result.build(brandList,ResultCodeEnum.SUCCESS);
+    }
+
 }

@@ -81,9 +81,9 @@
         id = #{id}
     </update>
 
-    <delete id="deleteSysUser">
+    <update id="deleteSysUser">
         update sys_user set is_deleted =1,update_time=now()
         where id =#{id}
-    </delete>
+    </update>
 
 </mapper>

@@ -45,9 +45,9 @@
         id =#{id}
     </update>
 
-    <delete id="deleteById">
+    <update id="deleteById">
         update sys_role set is_deleted =1 where id=#{value}
-    </delete>
+    </update>
 
     <select id="findAllRoles" resultMap="sysRole">
         select <include refid="columns"/> from sys_role where is_deleted =0

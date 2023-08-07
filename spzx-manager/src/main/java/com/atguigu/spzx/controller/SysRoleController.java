@@ -29,7 +29,7 @@ public class SysRoleController {
 
     //删除
     @DeleteMapping("deleteById/{roleId}")
-    public Result deleteById(@PathVariable  Integer roleId){
+    public Result deleteById(@PathVariable  Long roleId){
         sysRoleService.deleteById(roleId);
         return  Result.build(null,ResultCodeEnum.SUCCESS);
     }

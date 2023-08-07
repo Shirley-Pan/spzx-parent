@@ -4,6 +4,8 @@ import com.atguigu.spzx.manager.model.entity.product.Brand;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * projectName: com.atguigu.spzx.service
  *
@@ -21,4 +23,6 @@ public interface BrandService {
     void updateById(Brand brand);
 
     void deleteById(Long id);
+
+    List<Brand> findAll();
 }

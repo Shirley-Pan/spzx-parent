@@ -23,7 +23,7 @@ public interface SysRoleMapper {
 
     void updateSysRole(SysRole sysRole);
 
-    void deleteById(Integer roleId);
+    void deleteById(Long roleId);
 
     List<SysRole> findAllRoles();
 }
